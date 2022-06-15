@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay(){
+            let randNum = Math.floor(Math.random()*3);
+            let compGuess;
+            if(randNum === 1){
+                compGuess = 'rock';
+            }
+            else if(randNum ===2){
+                compGuess = 'paper';
+            }
+            else{
+                compGuess = 'scissor';
+            }
+            return compGuess;
+        }
+
+        
+        function playRound(playerSelection, compGuess){
+            if((playerSelection.toLowerCase() === 'rock' && compGuess ==='paper') || (playerSelection.toLowerCase()==='paper' && compGuess === 'scissor') || (playerSelection.toLocaleLowerCase()==='scissor' && compGuess ==='rock')){
+                console.log(`You Lose ! ${compGuess} beats ${playerSelection.toLowerCase()}`);
+            }
+            else if((compGuess === 'rock' && playerSelection.toLowerCase() ==='paper') || (compGuess==='paper' && playerSelection.toLowerCase() === 'scissor') || (compGuess==='scissor' && playerSelection.toLowerCase() ==='rock')){
+                console.log(`You Win ! ${playerSelection.toLowerCase()} beats ${compGuess}`);
+            }else {
+                console.log(`You Tie! ${playerSelection.toLowerCase()} ties ${compGuess}`)
+            }
+        }
+        for (let i = 0;i < 5; i++){
+            let playerSelection = prompt("Rock, Paper, or Scissors?");
+            playRound(playerSelection,computerPlay());
+        }
+    </script>
+</body>
+</html>
