@@ -1,0 +1,11 @@
+.results{
+    display: flex;
+}
+
+.robot{
+    margin-left: auto;
+}
+
+.buttons{
+    text-align: center;
+}

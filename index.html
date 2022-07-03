@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+    <h2>Welcome to Online Rock, Paper, Scissors!</h2>
+    <div class="results">
+        <p class="human">Your Score:</p><span class="human-score"></span>
+        <p class="robot">Computer Score:</p><span class="robot-score"></span>
+    </div>
+    <div class="buttons">
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissor">Scissor</button>
+    </div>  
     <script>
         function computerPlay(){
             let randNum = Math.floor(Math.random()*3);
@@ -32,10 +43,9 @@
                 console.log(`You Tie! ${playerSelection.toLowerCase()} ties ${compGuess}`)
             }
         }
-        for (let i = 0;i < 5; i++){
-            let playerSelection = prompt("Rock, Paper, or Scissors?");
-            playRound(playerSelection,computerPlay());
-        }
+
+        const choice = document.querySelector('button');
+
     </script>
 </body>
 </html>
