@@ -17,6 +17,8 @@
         <button class="scissor">Scissor</button>
     </div>  
     <script>
+        let hScore = 0;
+        let rScore = 0;
         function computerPlay(){
             let randNum = Math.floor(Math.random()*3);
             let compGuess;
@@ -36,16 +38,33 @@
         function playRound(playerSelection, compGuess){
             if((playerSelection.toLowerCase() === 'rock' && compGuess ==='paper') || (playerSelection.toLowerCase()==='paper' && compGuess === 'scissor') || (playerSelection.toLocaleLowerCase()==='scissor' && compGuess ==='rock')){
                 console.log(`You Lose ! ${compGuess} beats ${playerSelection.toLowerCase()}`);
+                rScore++;
             }
             else if((compGuess === 'rock' && playerSelection.toLowerCase() ==='paper') || (compGuess==='paper' && playerSelection.toLowerCase() === 'scissor') || (compGuess==='scissor' && playerSelection.toLowerCase() ==='rock')){
                 console.log(`You Win ! ${playerSelection.toLowerCase()} beats ${compGuess}`);
+                hScore++;
             }else {
                 console.log(`You Tie! ${playerSelection.toLowerCase()} ties ${compGuess}`)
             }
         }
 
-        const choice = document.querySelector('button');
-
+        
+        const buttons = document.querySelectorAll('button');
+         //start the 5 different rounds
+        while ( hScore < 5 && rScore < 5){
+            buttons.forEach(div => div.addEventListener('click', () => {
+                playRound(div.className, computerPlay); 
+            }, {
+                once:true
+            }));
+            //want to check if a button has been pressed then do the play round
+        }
+        if(hScore === 5){
+            alert('You have beat the computer!');
+        }
+        else if(rScore === 5){
+            alert('You have lost to the computer!')
+        }
     </script>
 </body>
 </html>
