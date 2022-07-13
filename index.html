@@ -49,22 +49,20 @@
         }
 
         
-        const buttons = document.querySelectorAll('button');
+       const buttons = document.querySelectorAll('button');
          //start the 5 different rounds
-        while ( hScore < 5 && rScore < 5){
-            buttons.forEach(div => div.addEventListener('click', () => {
-                playRound(div.className, computerPlay); 
-            }, {
-                once:true
+         buttons.forEach(div => div.addEventListener('click', () => {
+            let compGuess = computerPlay();   
+            playRound(div.className, compGuess); 
             }));
-            //want to check if a button has been pressed then do the play round
-        }
+        
         if(hScore === 5){
             alert('You have beat the computer!');
         }
         else if(rScore === 5){
             alert('You have lost to the computer!')
         }
+    
     </script>
 </body>
 </html>
