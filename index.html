@@ -53,16 +53,14 @@
          //start the 5 different rounds
          buttons.forEach(div => div.addEventListener('click', () => {
             let compGuess = computerPlay();   
-            playRound(div.className, compGuess); 
+            playRound(div.className, compGuess);
+            if(hScore === 5){
+                alert('You have beat the computer!');
+            }
+            else if(rScore === 5){
+                alert('You have lost to the computer!')
+            } 
             }));
-        
-        if(hScore === 5){
-            alert('You have beat the computer!');
-        }
-        else if(rScore === 5){
-            alert('You have lost to the computer!')
-        }
-    
     </script>
 </body>
 </html>
