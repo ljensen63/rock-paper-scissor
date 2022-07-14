@@ -8,8 +8,11 @@
 <body>
     <h2>Welcome to Online Rock, Paper, Scissors!</h2>
     <div class="results">
-        <p class="human">Your Score:</p><span class="human-score"></span>
-        <p class="robot">Computer Score:</p><span class="robot-score"></span>
+        <p class="human">Your Score:</p>
+        <p class="robot">Computer Score:</p>
+    </div>
+    <div>
+        <p class="round-para"></p>
     </div>
     <div class="buttons">
         <button class="rock">Rock</button>
@@ -34,33 +37,56 @@
             return compGuess;
         }
 
+        function humanWin(hGuess, rGuess){
+            hScore++;
+            const hScoreBox = document.querySelector('.human');
+            hScoreBox.textContent  += ' x';
+            const para = document.querySelector('.round-para');
+            para.textContent = `Your ${hGuess} has beat ${rGuess} this round!`;
+        }
+
+        function roboWin(hGuess, rGuess){
+            rScore++;
+            const rScoreBox = document.querySelector('.robot')
+            rScoreBox.textContent  += ' x';
+            const para = document.querySelector('.round-para');
+            para.textContent = `Your ${hGuess} has lost to ${rGuess} this round!`;
+        }
+
+        function gameTie(){
+            const para = document.querySelector('.round-para');
+            para.textContent = `You have tied this round!`;
+        }
+
         
         function playRound(playerSelection, compGuess){
             if((playerSelection.toLowerCase() === 'rock' && compGuess ==='paper') || (playerSelection.toLowerCase()==='paper' && compGuess === 'scissor') || (playerSelection.toLocaleLowerCase()==='scissor' && compGuess ==='rock')){
-                console.log(`You Lose ! ${compGuess} beats ${playerSelection.toLowerCase()}`);
-                rScore++;
+                roboWin(playerSelection,compGuess);
             }
             else if((compGuess === 'rock' && playerSelection.toLowerCase() ==='paper') || (compGuess==='paper' && playerSelection.toLowerCase() === 'scissor') || (compGuess==='scissor' && playerSelection.toLowerCase() ==='rock')){
-                console.log(`You Win ! ${playerSelection.toLowerCase()} beats ${compGuess}`);
-                hScore++;
+                humanWin(playerSelection, compGuess);
             }else {
-                console.log(`You Tie! ${playerSelection.toLowerCase()} ties ${compGuess}`)
+                gameTie();
             }
+        }
+
+        function playGame(playerGuess){
+                let compGuess = computerPlay();   
+                playRound(playerGuess, compGuess);
+            if(hScore === 5){
+                alert('You have beat the computer!');
+            }
+            else if(rScore === 5){
+                alert('You have lost to the computer!');   
+            } 
         }
 
         
        const buttons = document.querySelectorAll('button');
          //start the 5 different rounds
-         buttons.forEach(div => div.addEventListener('click', () => {
-            let compGuess = computerPlay();   
-            playRound(div.className, compGuess);
-            if(hScore === 5){
-                alert('You have beat the computer!');
-            }
-            else if(rScore === 5){
-                alert('You have lost to the computer!')
-            } 
-            }));
+        buttons.forEach(div => div.addEventListener('click', () => {
+            playGame(div.className); 
+        }));
     </script>
 </body>
 </html>

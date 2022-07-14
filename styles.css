@@ -13,3 +13,15 @@ h2{
 .buttons{
     text-align: center;
 }
+
+.human-score{
+    vertical-align: middle;
+}
+
+.robot-score{
+    text-align: center;
+}
+
+.round-para{
+    text-align: center;
+}
