@@ -25,3 +25,11 @@ h2{
 .round-para{
     text-align: center;
 }
+
+body { 
+    background: url(back1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
