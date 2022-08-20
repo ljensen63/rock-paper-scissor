@@ -22,7 +22,7 @@
                 <button class="scissor">Scissor</button>
             </div>
             <div class="newGame">
-                <button>New Game</button>
+                <button class="clear">New Game</button>
             </div> 
         </div> 
     </div>
@@ -89,11 +89,30 @@
         }
 
         
-       const buttons = document.querySelectorAll('button');
+      // const buttons = document.querySelectorAll('button');
+       const rock = document.querySelector('.rock');
+       const paper = document.querySelector('.paper');
+       const scissor = document.querySelector('.scissor');
+       const clearButton = document.querySelector('.clear') 
+       paper.addEventListener('click', () => playGame(paper.className));
+       rock.addEventListener('click', () => playGame(rock.className));
+       scissor.addEventListener('click', () => playGame(scissor.className));
+       clearButton.addEventListener('click', () => {
+            hScore = 0;
+            rScore = 0;
+            const rScoreBox = document.querySelector('.robot');
+            const hScoreBox = document.querySelector('.human');
+            const para = document.querySelector('.round-para');
+            rScoreBox.textContent = 'Computer Score:';
+            hScoreBox.textContent = 'Your Score:';
+            para.textContent = '';
+       });
          //start the 5 different rounds
+         /*
         buttons.forEach(div => div.addEventListener('click', () => {
             playGame(div.className); 
         }));
+        */
     </script>
 </body>
 </html>
